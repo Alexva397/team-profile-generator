@@ -8,18 +8,8 @@ const Intern = require('./lib/Intern');
 const teamArray = [];
 
 const managerInfo = () => {
+    console.log('Please answer the following questions about the team manager:\n--------------------');
     return inquirer.prompt([
-        // {
-        //     name: 'intro',
-        //     type: 'confirm',
-        //     message: 'Please answer the following questions about the team manager.\nPress y to begin.',
-        //     validate: function(response) {
-        //         if(response !== 'y') {
-        //             return;
-        //         }
-        //         return true;
-        //     }
-        // },
         {
             name: 'name',
             type: 'input',
@@ -65,6 +55,55 @@ const addTeamMember = () => {
     ])
     .then((data) => {
         console.log(data.newMember);
+        const position = data.newMember;
+        if (position === 'There are no more members.') {
+            return console.log(teamArray);
+        } else {
+            inquirer.prompt([
+                {
+                    name: 'name',
+                    type: 'input',
+                    message: 'What is their name?',
+                },
+                {
+                    name: 'id',
+                    type: 'input',
+                    message: 'What is their ID number?',
+                },
+                {
+                    name: 'email',
+                    type: 'input',
+                    message: 'What is their email address?',
+                },
+                {
+                    name: 'github',
+                    type: 'input',
+                    message: 'What is their Github username?',
+                    when: position === 'Engineer',
+                },
+                {
+                    name: 'school',
+                    type: 'input',
+                    message: 'What is the school they attend?',
+                    when: position === 'Intern',
+                },
+            ])
+            .then((data) => {
+                let memberName = data.name;
+                let memberId = data.id;
+                let memberEmail = data.email;
+                if (position === 'Engineer') {
+                    const memberGithub = data.github;
+                    const newEngineer = new Engineer(memberName, memberId, memberEmail, memberGithub);
+                    teamArray.push(newEngineer);
+                } else if (position === 'Intern') {
+                    const memberSchool = data.school;
+                    const newIntern = new Intern(memberName, memberId, memberEmail, memberSchool);
+                    teamArray.push(newIntern);
+                }
+            })
+            .then(() => addTeamMember());
+        }
     })
 }
 
