@@ -55,7 +55,7 @@ const addTeamMember = () => {
         },
     ])
     .then((data) => {
-        const position = data.newMember;
+        let position = data.newMember;
         if (position === 'There are no more team members.') {
             console.log(teamArray);
             fs.writeFile('./dist/view.html', writeHTML(teamArray), (err) => 

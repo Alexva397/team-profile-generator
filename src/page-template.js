@@ -18,11 +18,11 @@ const htmlHead =
     <div class="container-fluid p-5">
         <div class="row justify-content-center">`;
 
-const teamCards = ``;
+let teamCards = ``;
 
 
-const htmlFoot = 
-`        </div>
+const htmlFoot = `
+        </div>
     </div>
 </body>
 </html>`;
@@ -30,51 +30,51 @@ const htmlFoot =
 
 const writeHTML = (teamArray) => {
  for (let i = 0; i < teamArray.length; i++) {
-    if (teamArray[i].getrole() === 'Manager') {
+    if (teamArray[i].getRole() === 'Manager') {
          teamCards += `
-                    <div class="card m-4 shadow bg-body rounded" style="width: 18rem;">
-                        <div class="card-body bg-primary text-white">
-                            <h3 class="card-title">${teamArray[i].name}</h3>
-                            <h4 class="card-title"><i class="fas fa-user-tie mr-3"></i>Manager</h4>
-                        </div>
-                        <div class="card-body bg-light">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">ID: ${teamArray[i].id}</li>
-                                <li class="list-group-item">Email: <a href="mailto:${teamArray[i].email}">${teamArray[i].email}</a></li>
-                                <li class="list-group-item">Office Number: ${teamArray[i].officeNumber} </li>
-                            </ul>
-                        </div>
-                    </div>`;
-    } else if (teamArray[i].getrole() === 'Engineer') {
+            <div class="card m-4 shadow bg-body rounded" style="width: 18rem;">
+                <div class="card-body bg-primary text-white">
+                    <h3 class="card-title">${teamArray[i].name}</h3>
+                    <h4 class="card-title"><i class="fas fa-user-tie mr-3"></i>Manager</h4>
+                </div>
+                <div class="card-body bg-light">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${teamArray[i].id}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${teamArray[i].email}">${teamArray[i].email}</a></li>
+                        <li class="list-group-item">Office Number: ${teamArray[i].officeNumber} </li>
+                    </ul>
+                </div>
+            </div>`;
+    } else if (teamArray[i].getRole() === 'Engineer') {
         teamCards += `
-        <div class="card m-4 shadow bg-body rounded" style="width: 18rem;">
-            <div class="card-body bg-primary text-white">
-                <h3 class="card-title">${teamArray[i].name}/h3>
-                <h4 class="card-title"><i class="fab fa-codepen mr-3"></i>Engineer</h4>
-            </div>
-            <div class="card-body bg-light">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${teamArray[i].id}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${teamArray[i].email}">${teamArray[i].email}</a></li>
-                    <li class="list-group-item">GitHub: <a href="https://github.com/${teamArray[i].githubUsername}" target="_blank">${teamArray[i].githubUsername}</a></li>
-                </ul>
-            </div>
-        </div>`;
-    } else if (teamArray[i] === 'Intern') {
+            <div class="card m-4 shadow bg-body rounded" style="width: 18rem;">
+                <div class="card-body bg-primary text-white">
+                    <h3 class="card-title">${teamArray[i].name}</h3>
+                    <h4 class="card-title"><i class="fab fa-codepen mr-3"></i>Engineer</h4>
+                </div>
+                <div class="card-body bg-light">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${teamArray[i].id}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${teamArray[i].email}">${teamArray[i].email}</a></li>
+                        <li class="list-group-item">GitHub: <a href="https://github.com/${teamArray[i].githubUsername}" target="_blank">${teamArray[i].githubUsername}</a></li>
+                    </ul>
+                </div>
+            </div>`;
+    } else if (teamArray[i].getRole() === 'Intern') {
         teamCards += `
-        <div class="card m-4 shadow bg-body rounded" style="width: 18rem;">
-            <div class="card-body bg-primary text-white">
-                <h3 class="card-title">${teamArray[i].name}</h3>
-                <h4 class="card-title"><i class="fas fa-user-graduate mr-3"></i>Intern</h4>
-            </div>
-            <div class="card-body bg-light">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${teamArray[i].id}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${teamArray[i].email}">${teamArray[i].email}</a></li>
-                    <li class="list-group-item">School: ${teamArray[i].school}</li>
-                </ul>           
-            </div>
-        </div>`;
+            <div class="card m-4 shadow bg-body rounded" style="width: 18rem;">
+                <div class="card-body bg-primary text-white">
+                    <h3 class="card-title">${teamArray[i].name}</h3>
+                    <h4 class="card-title"><i class="fas fa-user-graduate mr-3"></i>Intern</h4>
+                </div>
+                <div class="card-body bg-light">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${teamArray[i].id}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${teamArray[i].email}">${teamArray[i].email}</a></li>
+                        <li class="list-group-item">School: ${teamArray[i].school}</li>
+                    </ul>           
+                </div>
+            </div>`;
     }
  }
  return `${htmlHead}${teamCards}${htmlFoot}`;
