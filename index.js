@@ -55,7 +55,6 @@ const addTeamMember = () => {
         },
     ])
     .then((data) => {
-        console.log(data.newMember);
         const position = data.newMember;
         if (position === 'There are no more team members.') {
             console.log(teamArray);
@@ -104,7 +103,7 @@ const addTeamMember = () => {
                     teamArray.push(newIntern);
                 }
             })
-            .then(() => addTeamMember());
+            .then(() => addTeamMember())
         }
     })
 }
