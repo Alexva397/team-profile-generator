@@ -58,7 +58,9 @@ const addTeamMember = () => {
         const position = data.newMember;
         if (position === 'There are no more team members.') {
             console.log(teamArray);
-            return; 
+            fs.writeFile('./dist/view.html', writeHTML(teamArray), (err) => 
+              err? console.log(err) : console.log('Successfully created view.html')
+            ); 
         } else {
             inquirer.prompt([
                 {
