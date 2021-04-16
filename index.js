@@ -4,6 +4,7 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const writeHTML = require('./src/page-template');
 
 const teamArray = [];
 
@@ -13,7 +14,7 @@ const managerInfo = () => {
         {
             name: 'name',
             type: 'input',
-            message: 'What is their name?',
+            message: 'What is the name of the team manager?',
         },
         {
             name: 'id',
@@ -40,7 +41,7 @@ const createManager = (data) => {
     const offficeNum = data.office;
     const newManager = new Manager(managerName, managerID, managerEmail, offficeNum);
     teamArray.push(newManager);
-    addTeamMember();
+    // addTeamMember();
 };
 
 
@@ -50,14 +51,15 @@ const addTeamMember = () => {
             name: 'newMember',
             type: 'list',
             message: 'Would you like to add another team member?',
-            choices: ['Engineer', 'Intern', 'There are no more members.'],
+            choices: ['Engineer', 'Intern', 'There are no more team members.'],
         },
     ])
     .then((data) => {
         console.log(data.newMember);
         const position = data.newMember;
-        if (position === 'There are no more members.') {
-            return console.log(teamArray);
+        if (position === 'There are no more team members.') {
+            console.log(teamArray);
+            return; 
         } else {
             inquirer.prompt([
                 {
@@ -117,6 +119,7 @@ const init = () => {
     managerInfo()
     // .then((data) => console.log(data))
     .then((data) => createManager(data))
+    .then(() => addTeamMember())
     .catch((err) => console.error(err));
 };
 
