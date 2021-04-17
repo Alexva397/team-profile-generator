@@ -44,7 +44,6 @@ const createManager = (data) => {
     // addTeamMember();
 };
 
-
 const addTeamMember = () => {
     inquirer.prompt([
         {
@@ -55,9 +54,9 @@ const addTeamMember = () => {
         },
     ])
     .then((data) => {
-        let position = data.newMember;
+        const position = data.newMember;
         if (position === 'There are no more team members.') {
-            console.log(teamArray);
+            // console.log(teamArray);
             fs.writeFile('./dist/view.html', writeHTML(teamArray), (err) => 
               err? console.log(err) : console.log('Successfully created view.html')
             ); 
@@ -110,11 +109,6 @@ const addTeamMember = () => {
     })
 }
 
-
-
-
-
-
 const init = () => {
     console.log('Welcome to the Team Profile Generator!\n----------------------------------------');
     managerInfo()
@@ -123,8 +117,6 @@ const init = () => {
     .then(() => addTeamMember())
     .catch((err) => console.error(err));
 };
-
-
 
 // Function call to initialize app
 init();

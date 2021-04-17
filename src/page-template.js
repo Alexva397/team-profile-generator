@@ -6,20 +6,22 @@ const htmlHead =
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="./style.css" />
     <title>MY Team</title>
 </head>
 <body class="bg-light">
     <div class="container-fluid">
         <div class="row justify-content-center align-items-center bg-danger text-white">
-            <h1 class="p-5">My Team</h1>
+            <h1 class="p-5">My Team <i class="fas fa-users ml-4"></i></h1>
         </div>
     </div>
     <div class="container-fluid p-5">
         <div class="row justify-content-center">`;
 
 let teamCards = ``;
-
 
 const htmlFoot = `
         </div>
@@ -32,7 +34,7 @@ const writeHTML = (teamArray) => {
  for (let i = 0; i < teamArray.length; i++) {
     if (teamArray[i].getRole() === 'Manager') {
          teamCards += `
-            <div class="card m-4 shadow bg-body rounded" style="width: 18rem;">
+            <div class="card m-4 team-member-card" style="width: 18rem;">
                 <div class="card-body bg-primary text-white">
                     <h3 class="card-title">${teamArray[i].name}</h3>
                     <h4 class="card-title"><i class="fas fa-user-tie mr-3"></i>Manager</h4>
@@ -47,7 +49,7 @@ const writeHTML = (teamArray) => {
             </div>`;
     } else if (teamArray[i].getRole() === 'Engineer') {
         teamCards += `
-            <div class="card m-4 shadow bg-body rounded" style="width: 18rem;">
+            <div class="card m-4 team-member-card" style="width: 18rem;">
                 <div class="card-body bg-primary text-white">
                     <h3 class="card-title">${teamArray[i].name}</h3>
                     <h4 class="card-title"><i class="fab fa-codepen mr-3"></i>Engineer</h4>
@@ -62,7 +64,7 @@ const writeHTML = (teamArray) => {
             </div>`;
     } else if (teamArray[i].getRole() === 'Intern') {
         teamCards += `
-            <div class="card m-4 shadow bg-body rounded" style="width: 18rem;">
+            <div class="card m-4 team-member-card" style="width: 18rem;">
                 <div class="card-body bg-primary text-white">
                     <h3 class="card-title">${teamArray[i].name}</h3>
                     <h4 class="card-title"><i class="fas fa-user-graduate mr-3"></i>Intern</h4>
@@ -79,7 +81,5 @@ const writeHTML = (teamArray) => {
  }
  return `${htmlHead}${teamCards}${htmlFoot}`;
 }
-
-
 
 module.exports = writeHTML;

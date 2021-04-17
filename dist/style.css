@@ -1,0 +1,9 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.team-member-card {
+    border-radius: 4px;
+    box-shadow: 5px 5px 4px 0px rgba(0,0,0,0.67);
+    border: .5px solid rgb(38, 37, 46);
+}
