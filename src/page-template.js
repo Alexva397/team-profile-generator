@@ -1,3 +1,4 @@
+// First section of HTML
 const htmlHead = 
 `<!DOCTYPE html>
 <html lang="en">
@@ -21,8 +22,10 @@ const htmlHead =
     <div class="container-fluid p-5">
         <div class="row justify-content-center">`;
 
+// Generated team card template literal
 let teamCards = ``;
 
+// Final section of HTML
 const htmlFoot = `
         </div>
     </div>
@@ -30,6 +33,7 @@ const htmlFoot = `
 </html>`;
 
 
+// Function to write HTML and iterate over team array to generate cards
 const writeHTML = (teamArray) => {
  for (let i = 0; i < teamArray.length; i++) {
     if (teamArray[i].getRole() === 'Manager') {

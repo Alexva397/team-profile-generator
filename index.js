@@ -6,8 +6,11 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const writeHTML = require('./src/page-template');
 
+// Array to store team members
 const teamArray = [];
 
+
+// Prompt user for manager info
 const managerInfo = () => {
     console.log('Please answer the following questions about the team manager:\n--------------------');
     return inquirer.prompt([
@@ -34,6 +37,7 @@ const managerInfo = () => {
     ])
 };
 
+// Create new manager object and push to team array
 const createManager = (data) => {
     const managerName = data.name;
     const managerID = data.id;
@@ -41,9 +45,9 @@ const createManager = (data) => {
     const offficeNum = data.office;
     const newManager = new Manager(managerName, managerID, managerEmail, offficeNum);
     teamArray.push(newManager);
-    // addTeamMember();
 };
 
+// Create new team member then generate html once no more team members selected.
 const addTeamMember = () => {
     inquirer.prompt([
         {
@@ -56,7 +60,6 @@ const addTeamMember = () => {
     .then((data) => {
         const position = data.newMember;
         if (position === 'There are no more team members.') {
-            // console.log(teamArray);
             fs.writeFile('./dist/view.html', writeHTML(teamArray), (err) => 
               err? console.log(err) : console.log('Successfully created view.html')
             ); 
@@ -109,10 +112,10 @@ const addTeamMember = () => {
     })
 }
 
+// Function to start app and run manager and additional team member prompts
 const init = () => {
     console.log('Welcome to the Team Profile Generator!\n----------------------------------------');
     managerInfo()
-    // .then((data) => console.log(data))
     .then((data) => createManager(data))
     .then(() => addTeamMember())
     .catch((err) => console.error(err));
