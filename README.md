@@ -63,7 +63,7 @@ Once the user has completed entering their entire team, select `There are no mor
 
 ## Video
 
-[![Demo Video](https://img.youtube.com/vi/6rX_Z5B0xKQ/0.jpg)](https://www.youtube.com/watch?v=6rX_Z5B0xKQ)
+[![Demo Video](https://img.youtube.com/vi/khNkNMaLdrw/0.jpg)](https://www.youtube.com/watch?v=khNkNMaLdrw)
 
 
 ## Contributing 
